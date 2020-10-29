@@ -9,9 +9,17 @@ import org.hibernate.query.Query;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Реализация интерфейса {@link ContactRepository}
+ */
 public class ContactRepositoryImpl implements ContactRepository {
 
-
+    /**
+     * Получает все контакты по ID человека
+     * @param personId id человека
+     * @return список контактов или пустой список
+     * @throws RuntimeException при ошибках hibernate
+     */
     @Override
     public List<Contact> getAllByPersonId(BigDecimal personId) {
         Session session = HibernateSessionFactoryUtil.beginTransaction();
@@ -22,14 +30,24 @@ public class ContactRepositoryImpl implements ContactRepository {
         return retVal;
     }
 
+    /**
+     * Удаляет контакт по его id
+     * @param id id контакта
+     * @throws RuntimeException при ошибках hibernate
+     */
     @Override
-    public void removeContact(BigDecimal id) {
+    public void deleteContact(BigDecimal id) {
         Session session = HibernateSessionFactoryUtil.beginTransaction();
         Contact contact = session.get(Contact.class,id);
         session.delete(contact);
         HibernateSessionFactoryUtil.commitTransactionAndCloseSession(session);
     }
 
+    /**
+     * Изменяет контакт
+     * @param contact контакт с новыми значениями
+     * @throws RuntimeException при ошибках hibernate
+     */
     @Override
     public void modifyContact(Contact contact) {
         Session session = HibernateSessionFactoryUtil.beginTransaction();
@@ -37,13 +55,17 @@ public class ContactRepositoryImpl implements ContactRepository {
         HibernateSessionFactoryUtil.commitTransactionAndCloseSession(session);
     }
 
+    /**
+     * Добавляет новый контакт
+     * @param contact новый контакт
+     * @return новый элемент с заполненными полями
+     * @throws RuntimeException при ошибках hibernate
+     */
     @Override
     public Contact addContact(Contact contact) {
         Session session = HibernateSessionFactoryUtil.beginTransaction();
-        session.update(contact);
         BigDecimal id = (BigDecimal) session.save(contact);
-        Contact retVal = contact.clone();
-        retVal.setId(id);
+        Contact retVal = new Contact(id,contact.getPersonId(),contact.getContactTypeId(),contact.getNumber());
         HibernateSessionFactoryUtil.commitTransactionAndCloseSession(session);
         return retVal;
     }
