@@ -40,7 +40,6 @@ public class ContactType {
     @XmlTransient
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_type_id")
-//    @JoinTable(name = "contact", joinColumns = @JoinColumn(name = "contact_type_id",referencedColumnName = "id"))
     private final Set<Contact> contacts = new CopyOnWriteArraySet<>();
 
     /**

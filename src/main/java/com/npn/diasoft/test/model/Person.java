@@ -34,7 +34,6 @@ public class Person {
     @XmlTransient
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
-//    @JoinTable(name = "contact", joinColumns = @JoinColumn(name = "person_id",referencedColumnName = "id"))
     private final Set<Contact> contacts = new CopyOnWriteArraySet<>();
 
     /**
