@@ -7,7 +7,6 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Интерфейс web-сервися по работе с контактами

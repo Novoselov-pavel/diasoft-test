@@ -8,12 +8,8 @@ import com.npn.diasoft.test.webservices.interfaces.ContactWebServiceInterface;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Реализация интерфейса web-сервися по работе с контактами
@@ -22,6 +18,7 @@ import java.util.List;
         endpointInterface = "com.npn.diasoft.test.webservices.interfaces.ContactWebServiceInterface",
         portName = "ContactWebService")
 public class ContactWebService implements ContactWebServiceInterface {
+
 
     private final ContactRepository contactRepository = new ContactRepositoryImpl();
 

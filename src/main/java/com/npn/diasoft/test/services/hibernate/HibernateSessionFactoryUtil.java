@@ -31,7 +31,7 @@ public class HibernateSessionFactoryUtil {
 
     /**
      * Возвращает сессию.
-     * @return сессия
+     * @return сессию
      */
     public static Session getSession(){
         return getSessionFactory().getCurrentSession();
@@ -39,7 +39,7 @@ public class HibernateSessionFactoryUtil {
 
     /**
      * Возвращает сессию с открытой транзакцией
-     * @return
+     * @return сессию
      */
     public static Session beginTransaction(){
         Session session = getSession();

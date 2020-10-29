@@ -15,6 +15,21 @@ import java.util.List;
 public class ContactRepositoryImpl implements ContactRepository {
 
     /**
+     * Возвращает контакт по его id
+     *
+     * @param id id контакта
+     * @return контакт или null если не найден
+     * @throws RuntimeException при ошибках hibernate
+     */
+    @Override
+    public Contact getContactById(BigDecimal id) {
+        Session session = HibernateSessionFactoryUtil.beginTransaction();
+        Contact contact = session.get(Contact.class,id);
+        HibernateSessionFactoryUtil.commitTransactionAndCloseSession(session);
+        return contact;
+    }
+
+    /**
      * Получает все контакты по ID человека
      * @param personId id человека
      * @return список контактов или пустой список

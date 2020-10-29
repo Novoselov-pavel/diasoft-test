@@ -11,6 +11,14 @@ import java.util.List;
 public interface ContactRepository {
 
     /**
+     * Возвращает контакт по его id
+     * @param id id контакта
+     * @return контакт или null если не найден
+     * @throws RuntimeException при ошибках hibernate
+     */
+    Contact getContactById(BigDecimal id);
+
+    /**
      * Получает все контакты по ID человека
      * @param personId id человека
      * @return список контактов или пустой список

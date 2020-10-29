@@ -1,7 +1,6 @@
 package com.npn.diasoft.test.model;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 import java.util.Objects;

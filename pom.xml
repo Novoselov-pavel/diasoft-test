@@ -10,8 +10,7 @@
   <packaging>war</packaging>
 
   <name>diasoft-test Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>http://http://localhost:8080</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,9 +56,6 @@
       <artifactId>postgresql</artifactId>
       <version>${postgresql.jdbc.version}</version>
     </dependency>
-
-
-
 
   </dependencies>
 
